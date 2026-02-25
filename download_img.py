@@ -1,0 +1,10 @@
+import urllib.request
+url = "https://lh3.googleusercontent.com/fife/ALs6j_G93Gto_nU9bHqW8g8hI5FmmsT3Xvj5HkXXs6_cW4n17v96M06lHn7rK1J87kL4B91E3T_x6jXU93v19YwN3Z37l4Xy9F1P46uX_D0R8pD4Wp2W5xZ_k8qF5H8L4x1A6B0R1y838r0302_v9U3q1W86Q7Q3JzZ0WvQ0e8W5y84N5B6L4y3_0H8M2K_Ww88_F8E8w0V8c09H_W08Yx7Y7Qv5v99k8Xw363D7v_V8_9L4v0z9M_F3E4z6U0v6Z7p8y_S099v7f4u97R6M7H8d85_0L6x9E298F3W74H92k_S85h931s9B4P1M2u9_Q0Z0D3S8M6T88_Q3H0M4R1A8w0H_g24N_P6X0R9484S8F0u9p1L2k3v5h5Q0q2M8i1s3J5b0U9Z4k0o95I0h0F2z0u7h0G0u8p1H_k0Y8L48_H0T30C0Z8L5h5w0M9A_G1O4b4v0o7V1h_J9R8D1l6K5z4x1H1C7H5U4_9k2m9y3o1q4L_706a1g9y_6H2L7X9e5O438u0p8Y8B907K6Q1R_u9U4K8p8_0f24R259F890R6g0k3h5M_C827s25O0H_u2z9F37a5x1R0V8F1C3J7_3p3M2A1p03_11P9G08F9Y76b3q97T9r8v0U1Q4J8D95p9e6K9C2v_{_I0H1a6U2S0_9W_8b7s7O7B_Y3I_k3o8C4v_428F2r2Y5A1P5b_C8n4D8p1Q_D1A4M760R5V383H6l8V0r1a6r1O979F_r5P1W4B_p7r9R14?sz=w1000-h1000"
+req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+try:
+    with urllib.request.urlopen(req) as response, open('assets/favicon.png', 'wb') as out_file:
+        data = response.read()
+        out_file.write(data)
+    print("Downloaded successfully")
+except Exception as e:
+    print(f"Error: {e}")
