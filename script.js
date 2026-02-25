@@ -192,4 +192,53 @@ document.addEventListener("DOMContentLoaded", () => {
     `);
 
   elementsToObserve.forEach((el) => observer.observe(el));
+
+  /* --- DARK MODE TOGGLE & LIQUID RIPPLE --- */
+  const toggle = document.getElementById("theme-toggle");
+  const icon = toggle.querySelector(".toggle-icon");
+
+  // Load saved preference
+  if (localStorage.getItem("jbc-theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    icon.textContent = "☀";
+  }
+
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const isDark = document.body.classList.contains("dark-mode");
+    icon.textContent = isDark ? "☀" : "☽";
+    localStorage.setItem("jbc-theme", isDark ? "dark" : "light");
+
+    // Animate the button on click
+    toggle.style.transform = "scale(0.85) rotate(20deg)";
+    setTimeout(() => {
+      toggle.style.transform = "";
+    }, 200);
+  });
+
+  // Re-apply liquid ripple effect respecting dark mode
+  document.querySelectorAll(".glass, .glass-dark, .glass-red").forEach((el) => {
+    el.addEventListener("mousemove", (e) => {
+      const isDark = document.body.classList.contains("dark-mode");
+      const rect = el.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+      if (isDark) {
+        el.style.background = `radial-gradient(circle at ${x}% ${y}%,
+          rgba(255, 255, 255, 0.08) 0%,
+          rgba(255, 255, 255, 0.03) 40%,
+          rgba(255, 255, 255, 0.01) 100%)`;
+      } else {
+        el.style.background = `radial-gradient(circle at ${x}% ${y}%,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(255, 255, 255, 0.6) 40%,
+          rgba(240, 238, 235, 0.5) 100%)`;
+      }
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.style.background = "";
+    });
+  });
 });

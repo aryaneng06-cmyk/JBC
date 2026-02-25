@@ -23,6 +23,17 @@
   backface-visibility: hidden;
 }
 
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    color 0.3s ease,
+    box-shadow 0.4s ease,
+    filter 0.3s ease;
+}
+
 html {
   scroll-behavior: smooth;
   color: var(--charcoal);
@@ -1312,4 +1323,334 @@ button:hover,
     letter-spacing: 0.15em;
     padding: 3px 8px;
   }
+}
+/* =========================================
+   DARK MODE OVERRIDES & TOGGLE
+   ========================================= */
+
+#theme-toggle {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border-color: rgba(200, 16, 46, 0.3);
+}
+
+/* Dark mode state of the button itself */
+body.dark-mode #theme-toggle {
+  background: rgba(30, 30, 35, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* BACKGROUND */
+body.dark-mode {
+  background: #0a0a0f;
+}
+
+body.dark-mode::before {
+  background: radial-gradient(
+    circle,
+    rgba(200, 16, 46, 0.2) 0%,
+    transparent 70%
+  );
+}
+
+body.dark-mode::after {
+  background: radial-gradient(
+    circle,
+    rgba(80, 40, 160, 0.12) 0%,
+    transparent 70%
+  );
+}
+
+/* GLASS SURFACES */
+body.dark-mode .glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+body.dark-mode .glass-dark {
+  background: rgba(10, 10, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .glass-red {
+  background: rgba(200, 16, 46, 0.15);
+  border: 1px solid rgba(200, 16, 46, 0.3);
+  box-shadow: 0 8px 32px rgba(200, 16, 46, 0.2);
+}
+
+/* NAVBAR */
+body.dark-mode nav {
+  background: rgba(10, 10, 15, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+body.dark-mode nav .logo {
+  color: #ffffff;
+}
+
+body.dark-mode nav a {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+body.dark-mode nav a:hover {
+  color: #ffffff;
+}
+
+/* TYPOGRAPHY */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode .jbc-letters {
+  color: #ffffff;
+}
+
+body.dark-mode p,
+body.dark-mode li,
+body.dark-mode td,
+body.dark-mode address {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-mode .section-label,
+body.dark-mode .muted,
+body.dark-mode [style*="color: #888"],
+body.dark-mode [style*="color: var(--muted)"] {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* DIVIDER RULES */
+body.dark-mode hr,
+body.dark-mode .rule,
+body.dark-mode [style*="border"] {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* JBC LOGO WORDMARK */
+body.dark-mode .jbc-wordmark {
+  background: #0a0a0f;
+  color: #ffffff;
+}
+
+/* HERO */
+body.dark-mode .hero-tagline,
+body.dark-mode .hero-date {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+body.dark-mode .scroll-indicator {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* STAT BLOCKS */
+body.dark-mode .stat-number {
+  color: #c8102e;
+  text-shadow: 0 0 30px rgba(200, 16, 46, 0.4);
+}
+
+body.dark-mode .stat-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .stat-divider {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .stat-quote {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* PARTNERSHIP CARDS */
+body.dark-mode .card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(200, 16, 46, 0.35);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(200, 16, 46, 0.12);
+}
+
+body.dark-mode .card-title {
+  color: #ffffff;
+}
+
+body.dark-mode .card-desc {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* MODE OF ASSOCIATION ROWS */
+body.dark-mode .tier-row {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .tier-row.premium {
+  background: rgba(200, 16, 46, 0.07);
+}
+
+body.dark-mode .tier-name {
+  color: #ffffff;
+}
+
+body.dark-mode .tier-desc {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* DELIVERABLES TABLE */
+body.dark-mode .table-wrapper {
+  background: rgba(10, 10, 15, 0.6);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+body.dark-mode table th {
+  background: rgba(200, 16, 46, 0.3);
+  color: #ffffff;
+}
+
+body.dark-mode table tr:nth-child(odd) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+body.dark-mode table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode table tr:hover td {
+  background: rgba(200, 16, 46, 0.08);
+}
+
+body.dark-mode table td {
+  border-color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* LOCATION SECTION */
+body.dark-mode .location-details {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .venue-name {
+  color: #ffffff;
+}
+
+body.dark-mode .address-block {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+body.dark-mode .dt-label {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+body.dark-mode .dt-value {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+body.dark-mode .btn-directions {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+body.dark-mode .btn-directions:hover {
+  background: #c8102e;
+  border-color: #c8102e;
+}
+
+body.dark-mode .iframe-wrapper {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .iframe-wrapper:hover {
+  border-color: rgba(200, 16, 46, 0.4);
+}
+
+/* SPONSORS STRIP */
+body.dark-mode .marquee-wrapper {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+body.dark-mode .logo-item img {
+  filter: grayscale(100%) brightness(200%) !important;
+}
+
+body.dark-mode .logo-item img:hover {
+  filter: grayscale(0%) brightness(100%) !important;
+}
+
+body.dark-mode .cta-subtext {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .btn-partner {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+body.dark-mode .btn-partner:hover {
+  background: #c8102e;
+  border-color: #c8102e;
+  color: #ffffff;
+}
+
+/* CONTACT / CLOSING SECTION */
+body.dark-mode .closing-heading {
+  color: #ffffff;
+}
+
+body.dark-mode .closing-word-red {
+  color: #c8102e;
+  text-shadow: 0 0 40px rgba(200, 16, 46, 0.35);
+}
+
+body.dark-mode .contact-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .contact-name {
+  color: #ffffff;
+}
+
+body.dark-mode .contact-role,
+body.dark-mode .contact-phone {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .contact-email {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .contact-email:hover {
+  color: #c8102e;
 }
