@@ -143,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Elements to observe
     const elementsToObserve = document.querySelectorAll(`
         .reveal-up,
+        .reveal-slide-left,
+        .reveal-slide-right,
         .cards-grid,
         .stats-row,
         .tier-rows,
