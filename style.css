@@ -111,7 +111,7 @@ a {
 
 /* Glass Wrapper Styles */
 .glass {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.9);
@@ -125,7 +125,7 @@ a {
 }
 
 .glass-dark {
-  background: rgba(240, 238, 235, 0.6);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(32px) saturate(200%);
   -webkit-backdrop-filter: blur(32px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.85);
@@ -137,7 +137,7 @@ a {
 }
 
 .glass-red {
-  background: rgba(200, 16, 46, 0.07);
+  background: rgba(200, 16, 46, 0.03);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   border: 1px solid rgba(200, 16, 46, 0.2);
@@ -236,7 +236,7 @@ button:hover,
 
 .navbar.scrolled {
   transform: translateY(0);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -500,7 +500,7 @@ button:hover,
 
 .card:hover {
   transform: translateY(-6px) scale(1.02);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.45);
   border-color: rgba(200, 16, 46, 0.25);
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.1),
@@ -547,7 +547,7 @@ button:hover,
 }
 
 .tier-row.premium {
-  background: rgba(200, 16, 46, 0.04);
+  background: rgba(200, 16, 46, 0.02);
   border-left: 2px solid #c8102e;
 }
 
@@ -615,15 +615,15 @@ button:hover,
 }
 
 .custom-table tbody tr:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .custom-table tbody tr:nth-child(even) {
-  background-color: rgba(245, 243, 240, 0.6);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .custom-table tbody tr:hover {
-  background-color: rgba(200, 16, 46, 0.04);
+  background-color: rgba(200, 16, 46, 0.02);
 }
 
 .custom-table td {
@@ -830,7 +830,7 @@ button:hover,
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(245, 243, 240, 0.6);
+  background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
