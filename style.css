@@ -49,9 +49,11 @@ body::before {
   left: -10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle,
-      rgba(200, 16, 46, 0.08) 0%,
-      transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(200, 16, 46, 0.08) 0%,
+    transparent 70%
+  );
   filter: blur(80px);
   animation: orb1 12s ease-in-out infinite alternate;
   pointer-events: none;
@@ -65,9 +67,11 @@ body::after {
   right: -10%;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle,
-      rgba(200, 16, 46, 0.05) 0%,
-      transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(200, 16, 46, 0.05) 0%,
+    transparent 70%
+  );
   filter: blur(100px);
   animation: orb2 15s ease-in-out infinite alternate;
   pointer-events: none;
@@ -317,53 +321,37 @@ button:hover,
   /* adjust optical center */
 }
 
-.hero-logo-container {
+.jbc-logo-wrapper {
   position: relative;
   display: inline-block;
-  margin-bottom: 2rem;
-  /* background-color: var(--bg); optional, per spec */
+  line-height: 1;
 }
 
 .jbc-letters {
-  font-family: var(--font-heading);
-  font-size: clamp(120px, 18vw, 220px);
-  color: #ffffff;
-  text-shadow: 0 0 80px rgba(200, 16, 46, 0.3);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  opacity: 1;
-  position: relative;
-  z-index: 1;
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(100px, 16vw, 200px);
+  font-weight: 400;
+  color: #1a1a1a;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  display: block;
+  user-select: none;
 }
 
-.wordmark-strip {
+.jbc-wordmark {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(9px, 1.1vw, 13px);
+  font-weight: 400;
+  color: #1a1a1a;
+  letter-spacing: 0.22em;
   white-space: nowrap;
-  gap: 1rem;
-  background-color: transparent;
-  padding: 0 1rem;
-  opacity: 1;
-  z-index: 2;
-}
-
-.wordmark-text {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: #2c2c2c;
-}
-
-.wordmark-line {
-  color: #c8102e;
-  font-size: 11px;
-  letter-spacing: -1px;
+  background: #ffffff;
+  padding: 4px 12px;
 }
 
 .hero-tagline {
@@ -1296,5 +1284,17 @@ button:hover,
   .platform-icons {
     flex-direction: column;
     gap: 2rem;
+  }
+
+  /* Hero Logo Mobile Adjustments */
+  .jbc-letters {
+    font-size: 18vw;
+    letter-spacing: -0.03em;
+  }
+
+  .jbc-wordmark {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    padding: 3px 8px;
   }
 }
