@@ -348,8 +348,9 @@ button:hover,
   text-shadow: 0 0 80px rgba(200, 16, 46, 0.3);
   letter-spacing: -0.02em;
   line-height: 1;
-  opacity: 0;
-  /* for animation */
+  opacity: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .wordmark-strip {
@@ -362,10 +363,9 @@ button:hover,
   white-space: nowrap;
   gap: 1rem;
   background-color: transparent;
-  /* create cutout effect over JBC */
   padding: 0 1rem;
-  opacity: 0;
-  /* for animation */
+  opacity: 1;
+  z-index: 2;
 }
 
 .wordmark-text {
@@ -906,17 +906,14 @@ button:hover,
   width: auto;
   object-fit: contain;
   opacity: 0.85;
-  filter: grayscale(100%) brightness(200%);
   transition:
     opacity 0.2s,
-    transform 0.2s,
-    filter 0.3s;
+    transform 0.2s;
 }
 
 .logo-item:hover img {
   opacity: 1;
   transform: scale(1.05);
-  filter: grayscale(0%) brightness(100%);
 }
 
 .logo-sep {
