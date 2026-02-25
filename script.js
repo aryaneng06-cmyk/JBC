@@ -329,4 +329,41 @@ document.addEventListener("DOMContentLoaded", () => {
   if ("ontouchstart" in window) {
     trailDots.forEach((dot) => (dot.el.style.display = "none"));
   }
+
+  /* --- 6. SHIMMER CONTACT CARDS --- */
+  document.querySelectorAll('.contact-card').forEach(card => {
+    const shimmer = card.querySelector('.card-shimmer');
+    if (shimmer) {
+      card.addEventListener('mouseenter', () => {
+        shimmer.style.animation = 'none';
+        shimmer.offsetHeight; // force reflow to restart animation
+        shimmer.style.animation = '';
+        shimmer.style.opacity = '1';
+      });
+      card.addEventListener('mouseleave', () => {
+        shimmer.style.opacity = '0';
+      });
+    }
+  });
+
+  /* --- 7. SCROLL PROGRESS BAR --- */
+  const progressBar = document.getElementById('scroll-progress-bar');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = `${scrollPercent}%`;
+      }
+
+      // Show glowing tip once user starts scrolling
+      if (scrollTop > 10) {
+        progressBar.classList.add('active');
+      } else {
+        progressBar.classList.remove('active');
+        progressBar.style.width = '0%';
+      }
+    });
+  }
 });

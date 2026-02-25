@@ -60,11 +60,9 @@ body::before {
   left: -10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(
-    circle,
-    rgba(200, 16, 46, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(200, 16, 46, 0.08) 0%,
+      transparent 70%);
   filter: blur(80px);
   animation: orb1 12s ease-in-out infinite alternate;
   pointer-events: none;
@@ -78,11 +76,9 @@ body::after {
   right: -10%;
   width: 700px;
   height: 700px;
-  background: radial-gradient(
-    circle,
-    rgba(200, 16, 46, 0.05) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(200, 16, 46, 0.05) 0%,
+      transparent 70%);
   filter: blur(100px);
   animation: orb2 15s ease-in-out infinite alternate;
   pointer-events: none;
@@ -376,7 +372,6 @@ button:hover,
   text-transform: uppercase;
   background: #ffffff;
   padding: 4px 12px;
-  margin-top: 12px;
 }
 
 .hero-tagline {
@@ -1065,27 +1060,112 @@ button:hover,
 }
 
 .contact-card {
-  padding: 24px;
-  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 32px;
+  border-radius: 16px;
+  cursor: default;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.4s ease;
+  flex: 1;
+  min-width: 240px;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(200, 16, 46, 0.15);
+}
+
+/* THE SHIMMER LAYER */
+.card-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.45) 40%,
+      rgba(255, 255, 255, 0.65) 50%,
+      rgba(255, 255, 255, 0.45) 60%,
+      transparent 80%);
+  transform: skewX(-15deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: none;
+  z-index: 2;
+}
+
+.contact-card:hover .card-shimmer {
+  animation: shimmer-sweep 0.65s ease forwards;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    left: -100%;
+    opacity: 1;
+  }
+
+  100% {
+    left: 160%;
+    opacity: 1;
+  }
+}
+
+/* CARD CONTENT */
+.card-content {
+  position: relative;
+  z-index: 3;
 }
 
 .contact-name {
-  font-family: var(--font-heading);
-  font-size: 24px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
   color: #1a1a1a;
-  margin-bottom: 0.5rem;
-}
-
-.contact-role,
-.contact-phone {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 14px;
-  color: #888580;
+  margin-bottom: 4px;
 }
 
 .contact-role {
-  margin-bottom: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #888580;
+  margin-bottom: 16px;
+}
+
+.contact-divider {
+  width: 32px;
+  height: 2px;
+  background: #c8102e;
+  margin-bottom: 16px;
+}
+
+.contact-number {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #2c2c2c;
+}
+
+/* RED ACCENT EDGE ON HOVER */
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0%;
+  background: #c8102e;
+  border-radius: 16px 0 0 16px;
+  transition: height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 4;
+}
+
+.contact-card:hover::before {
+  height: 100%;
 }
 
 .contact-email {
@@ -1421,6 +1501,7 @@ button:hover,
   }
 
   .jbc-wordmark {
+    margin-top: -4px;
     font-size: 8px;
     letter-spacing: 0.15em;
     padding: 3px 8px;
@@ -1481,19 +1562,15 @@ body.dark-mode {
 }
 
 body.dark-mode::before {
-  background: radial-gradient(
-    circle,
-    rgba(200, 16, 46, 0.2) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(200, 16, 46, 0.2) 0%,
+      transparent 70%);
 }
 
 body.dark-mode::after {
-  background: radial-gradient(
-    circle,
-    rgba(80, 40, 160, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(80, 40, 160, 0.12) 0%,
+      transparent 70%);
 }
 
 /* GLASS SURFACES */
@@ -1758,13 +1835,31 @@ body.dark-mode .contact-card {
   border-color: rgba(255, 255, 255, 0.08);
 }
 
+body.dark-mode .contact-card:hover {
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(200, 16, 46, 0.25);
+}
+
+body.dark-mode .card-shimmer {
+  background: linear-gradient(105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.08) 40%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.08) 60%,
+      transparent 80%);
+}
+
 body.dark-mode .contact-name {
   color: #ffffff;
 }
 
-body.dark-mode .contact-role,
-body.dark-mode .contact-phone {
-  color: rgba(255, 255, 255, 0.5);
+body.dark-mode .contact-role {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .contact-number {
+  color: rgba(255, 255, 255, 0.65);
 }
 
 body.dark-mode .contact-email {
@@ -1773,4 +1868,46 @@ body.dark-mode .contact-email {
 
 body.dark-mode .contact-email:hover {
   color: #c8102e;
+}
+
+/* SCROLL PROGRESS BAR */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg,
+      #8b0b1f 0%,
+      #c8102e 50%,
+      #ff2040 100%);
+  z-index: 99999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+
+  /* Subtle glow beneath the bar */
+  box-shadow: 0 0 8px rgba(200, 16, 46, 0.5),
+    0 0 2px rgba(200, 16, 46, 0.8);
+}
+
+/* Glowing tip at the right edge of the bar */
+#scroll-progress-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff2040;
+  box-shadow: 0 0 8px rgba(255, 32, 64, 0.9),
+    0 0 16px rgba(200, 16, 46, 0.6);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Show the glowing tip only when scrolling has started */
+#scroll-progress-bar.active::after {
+  opacity: 1;
 }
