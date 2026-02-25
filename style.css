@@ -708,7 +708,135 @@ button:hover,
 }
 
 
-/* --- 9. CONTACT SECTION --- */
+/* --- 9. PAST SPONSORS SECTION --- */
+#sponsors {
+  background-color: var(--bg);
+  padding: 80px 0;
+}
+
+.sponsors-subtext {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+}
+
+.sponsors-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--rule);
+  margin-bottom: 3rem;
+}
+
+/* Marquee Strip */
+.marquee-wrapper {
+  width: 100vw;
+  width: 100%;
+  /* Fallback */
+  margin-left: calc(-50vw + 50%);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bg-alt);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  height: 100px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-item img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+  filter: grayscale(100%);
+  transition: opacity 0.2s, transform 0.2s, filter 0.3s;
+}
+
+.logo-item:hover img {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.logo-sep {
+  color: var(--red);
+  font-size: 10px;
+  padding: 0 40px;
+}
+
+/* Sponsors CTA */
+.sponsors-cta {
+  margin-top: 24px;
+}
+
+.cta-subtext {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.btn-partner {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--black);
+  background-color: transparent;
+  border: 1px solid var(--black);
+  padding: 12px 32px;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.btn-partner:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: #FFF;
+  transform: translateY(0);
+}
+
+
+/* --- 10. CONTACT SECTION --- */
 #contact {
   background-color: var(--black);
   color: #FFF;
@@ -882,6 +1010,26 @@ button:hover,
   transform: translateX(0);
 }
 
+.reveal-fade-strip {
+  opacity: 0;
+  transition: opacity 1s ease 0.2s;
+}
+
+.reveal-fade-strip.visible {
+  opacity: 1;
+}
+
+.reveal-fade-cta {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+}
+
+.reveal-fade-cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .closing-word-red.visible {
   opacity: 1;
   transform: translateX(0);
@@ -950,13 +1098,23 @@ button:hover,
     flex: 1 1 auto;
   }
 
-  .btn-directions {
+  .btn-directions,
+  .btn-partner {
     display: block;
     width: 100%;
   }
 
   .iframe-wrapper iframe {
     height: 280px;
+  }
+
+  /* Sponsors Mobile Adjustments */
+  .logo-item img {
+    height: 36px;
+  }
+
+  .logo-sep {
+    padding: 0 24px;
   }
 
   .contact-cards {

@@ -145,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .reveal-up,
         .reveal-slide-left,
         .reveal-slide-right,
+        .reveal-fade-strip,
+        .reveal-fade-cta,
         .cards-grid,
         .stats-row,
         .tier-rows,
