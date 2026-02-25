@@ -80,30 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* --- LIQUID RIPPLE EFFECT --- */
-  document.querySelectorAll(".glass, .glass-dark, .glass-red").forEach((el) => {
-    el.addEventListener("mousemove", (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      let baseAlpha = "0.03";
-      if (el.classList.contains("glass-dark")) baseAlpha = "0.2";
-
-      el.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.1), transparent 40%), rgba(255,255,255,${baseAlpha})`;
-    });
-
-    el.addEventListener("mouseleave", () => {
-      if (el.classList.contains("glass-dark")) {
-        el.style.background = "rgba(10, 10, 15, 0.45)";
-      } else if (el.classList.contains("glass-red")) {
-        el.style.background = "rgba(200, 16, 46, 0.18)";
-      } else {
-        el.style.background = "rgba(255, 255, 255, 0.06)";
-      }
-    });
-  });
-
   /* --- SCROLL ANIMATIONS (INTERSECTION OBSERVER) --- */
   const observerOptions = {
     root: null,
