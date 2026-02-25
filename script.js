@@ -1,41 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- CUSTOM CURSOR --- */
-    const cursor = document.querySelector('.cursor');
-    const hoverElements = document.querySelectorAll('a, button, .card, .tier-row, .platform');
-
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('hovering');
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hovering');
-        });
-    });
-
-    // Hide default cursor site-wide except on mobile
-    if (window.innerWidth > 768) {
-        document.body.style.cursor = 'none';
-        hoverElements.forEach(el => {
-            el.style.cursor = 'none';
-        });
-    } else {
-        cursor.style.display = 'none'; // hide custom cursor on mobile touch screens
-    }
-
-
     /* --- STICKY NAVBAR & ACTIVE LINKS --- */
     const navbar = document.querySelector('.navbar');
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > window.innerHeight * 0.5) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
@@ -60,36 +31,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    /* --- INITIAL HERO ANIMATION --- */
+    setTimeout(() => {
+        // Hero logo
+        const jbcLetters = document.querySelector('.jbc-letters');
+        if (jbcLetters) jbcLetters.classList.add('visible');
+
+        const wordmarkStr = document.querySelector('.wordmark-strip');
+        if (wordmarkStr) wordmarkStr.classList.add('visible');
+
+        // Tagline & bottom
+        const tagline = document.querySelector('.hero-tagline');
+        if (tagline) tagline.classList.add('visible');
+
+        const bottom = document.querySelector('.hero-bottom');
+        if (bottom) bottom.classList.add('visible');
+    }, 100);
+
+
     /* --- COLOR DELIVERABLES TABLE SYMBOLS --- */
     const tds = document.querySelectorAll('.custom-table td');
     tds.forEach(td => {
-        if (td.textContent.trim() === '✦') {
+        const text = td.textContent.trim();
+        if (text === '✦') {
             td.style.color = 'var(--red)';
-        } else if (td.textContent.trim() === '—') {
+        } else if (text === '—') {
             td.style.color = 'var(--muted)';
-        } else if (td.textContent.trim() === 'OPT') {
-            td.style.color = 'var(--white)';
+        } else if (text === 'OPT') {
+            td.style.color = 'var(--muted)';
             td.style.fontStyle = 'italic';
-            td.style.fontSize = '0.7rem';
+            td.style.fontSize = '12px';
         }
     });
-
-
-    /* --- INITIAL HERO ANIMATION --- */
-    setTimeout(() => {
-        const lines = document.querySelectorAll('.hero-title .line');
-        lines.forEach((line, index) => {
-            setTimeout(() => {
-                line.classList.add('visible');
-            }, index * 200);
-        });
-
-        document.querySelector('.hero-divider').classList.add('visible');
-        
-        const taglines = document.querySelectorAll('.fade-in-tagline');
-        taglines.forEach(tag => tag.classList.add('visible'));
-
-    }, 300); // slight delay after load
 
 
     /* --- SCROLL ANIMATIONS (INTERSECTION OBSERVER) --- */
@@ -103,30 +76,40 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const el = entry.target;
-                
+
                 el.classList.add('visible');
 
-                // Handle stagger children explicitly (e.g. cards, tiers)
-                if (el.classList.contains('cards-grid') || el.classList.contains('tiers-container') || el.classList.contains('contact-cards')) {
-                    const staggers = el.querySelectorAll('.reveal-fade-stagger, .reveal-slide-left');
+                // Handle stagger children explicitly
+                if (el.classList.contains('cards-grid') || el.classList.contains('stats-row') || el.classList.contains('contact-cards')) {
+                    const staggers = el.querySelectorAll('.reveal-up-stagger');
                     staggers.forEach((child, index) => {
                         setTimeout(() => {
                             child.classList.add('visible');
                         }, index * 150);
                     });
                 }
-                
+
+                if (el.classList.contains('tier-rows')) {
+                    const staggers = el.querySelectorAll('.reveal-fade-left');
+                    staggers.forEach((child, index) => {
+                        setTimeout(() => {
+                            child.classList.add('visible');
+                        }, index * 150);
+                    });
+                }
+
                 // Count up animation for stats
                 if (el.classList.contains('stat-number') && !el.classList.contains('counted')) {
                     el.classList.add('counted');
                     const target = parseInt(el.getAttribute('data-target'));
                     let count = 0;
                     const duration = 2000;
-                    const interval = duration / target;
-                    
+                    const interval = Math.max(10, duration / target);
+
                     const updateCount = () => {
                         if (count < target) {
-                            count++;
+                            count += Math.ceil(target / (duration / interval));
+                            if (count > target) count = target;
                             el.innerText = count;
                             setTimeout(updateCount, interval);
                         } else {
@@ -136,28 +119,36 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateCount();
                 }
 
-                obs.unobserve(el); // only animate once
+                // Closing statement sequence
+                if (el.classList.contains('closing-heading')) {
+                    const words = el.querySelectorAll('.closing-word');
+                    words.forEach((word, index) => {
+                        setTimeout(() => {
+                            word.classList.add('visible');
+                        }, index * 200);
+                    });
+                    const redWord = el.querySelector('.closing-word-red');
+                    if (redWord) {
+                        setTimeout(() => {
+                            redWord.classList.add('visible');
+                        }, words.length * 200);
+                    }
+                }
+
+                obs.unobserve(el); // align with minimalist "once only" feel
             }
         });
     }, observerOptions);
 
     // Elements to observe
     const elementsToObserve = document.querySelectorAll(`
-        .reveal-slide-right, 
-        .reveal-slide-left, 
-        .reveal-fade, 
-        .reveal-fade-stagger,
-        .reveal-fade-table,
-        .accent-expand, 
-        .accent-expand-left,
-        .accent-expand-vertical,
-        .stat-divider,
+        .reveal-up,
         .cards-grid,
-        .tiers-container,
+        .stats-row,
+        .tier-rows,
         .contact-cards,
         .stat-number,
-        .reveal-sweep-right,
-        .reveal-letter-space
+        .closing-heading
     `);
 
     elementsToObserve.forEach(el => observer.observe(el));

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,154 +8,162 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
 
+<body>
     <!-- Sticky Navbar -->
     <nav class="navbar">
         <div class="nav-logo">JBC</div>
         <div class="nav-links">
-            <a href="#about" class="nav-link">About</a>
-            <a href="#overview" class="nav-link">Overview</a>
-            <a href="#partnership" class="nav-link">Partnership</a>
-            <a href="#deliverables" class="nav-link">Deliverables</a>
-            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#about" class="nav-link">ABOUT</a>
+            <span class="nav-dot">&middot;</span>
+            <a href="#overview" class="nav-link">OVERVIEW</a>
+            <span class="nav-dot">&middot;</span>
+            <a href="#partnership" class="nav-link">PARTNERSHIP</a>
+            <span class="nav-dot">&middot;</span>
+            <a href="#contact" class="nav-link">CONTACT</a>
         </div>
     </nav>
 
     <!-- 1. HERO SECTION -->
     <section id="hero" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="line fade-up">JAI HIND</span>
-                <span class="line fade-up">BUSINESS CONCLAVE</span>
-                <hr class="hero-divider fade-up-hr">
-                <span class="line fade-up">2026</span>
-            </h1>
-            <p class="hero-tagline fade-in-tagline">WHERE INDIA'S BUSINESS LEADERS ARE SHAPED</p>
+            <div class="hero-logo-container">
+                <div class="jbc-letters">JBC</div>
+                <div class="wordmark-strip">
+                    <span class="wordmark-line">&mdash;&mdash;</span>
+                    <span class="wordmark-text">JAI HIND BUSINESS CONCLAVE</span>
+                    <span class="wordmark-line">&mdash;&mdash;</span>
+                </div>
+            </div>
+            <p class="hero-tagline">WHERE INDIA'S BUSINESS LEADERS ARE SHAPED</p>
         </div>
-        <div class="hero-bottom fade-in-tagline">
-            5TH JUNE 2026 &middot; TAJ PRESIDENT, MUMBAI &middot; 10:00 AM – 5:00 PM
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <div class="scroll-dot"></div>
+        <div class="hero-bottom">
+            <div class="hero-red-rule"></div>
+            <div class="hero-date-location">5TH JUNE 2026 &middot; TAJ PRESIDENT, MUMBAI</div>
         </div>
     </section>
 
     <!-- 2. ABOUT SECTION -->
-    <section id="about" class="about">
-        <div class="about-container reveal-slide-right">
-            <div class="about-left">
-                <div class="vertical-bar accent-expand"></div>
+    <section id="about" class="about alt-bg reveal-up">
+        <div class="container section-inner">
+            <div class="section-label-group">
+                <div class="label-rule"></div>
                 <div class="section-label">THE CONCLAVE</div>
             </div>
-            <div class="about-right">
-                <h2 class="about-heading">A Leadership Platform. Not Just An Event.</h2>
-                <p class="about-body">
-                    The Jai Hind Business Conclave is a leadership-focused platform that enables direct engagement between high-potential students and senior industry decision-makers — through speaker sessions, structured networking, and conversations that go beyond academic learning.
-                </p>
+            <h2 class="about-heading reveal-up">A Leadership Platform. Not Just An Event.</h2>
+            <p class="about-body reveal-up">
+                The Jai Hind Business Conclave is a leadership-focused platform that enables direct engagement between
+                high-potential students and senior industry decision-makers — through speaker sessions, structured
+                networking, and conversations that go beyond academic learning.
+            </p>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- 3. OVERVIEW / EVENT STATS -->
+    <section id="overview" class="overview base-bg reveal-up">
+        <div class="container">
+            <div class="stats-row">
+                <div class="stat-block reveal-up-stagger">
+                    <div class="stat-number" data-target="150">0</div>
+                    <div class="stat-label">Shortlisted Students</div>
+                </div>
+                <div class="stat-vertical-rule"></div>
+                <div class="stat-block reveal-up-stagger">
+                    <div class="stat-number-text">1 Day</div>
+                    <div class="stat-label">Invite Only Forum</div>
+                </div>
+                <div class="stat-vertical-rule"></div>
+                <div class="stat-block reveal-up-stagger">
+                    <div class="stat-number-text">2 Per Inst.</div>
+                    <div class="stat-label">Top Colleges Across India</div>
+                </div>
+            </div>
+            <div class="overview-quote reveal-up">
+                "A focused room where presence carries weight."
             </div>
         </div>
     </section>
 
-    <!-- 3. EVENT OVERVIEW SECTION -->
-    <section id="overview" class="overview">
-        <div class="stats-container">
-            <div class="stat-block reveal-fade">
-                <div class="stat-number" data-target="150">0</div>
-                <div class="stat-label">Shortlisted Students</div>
-            </div>
-            <div class="stat-divider accent-expand-vertical"></div>
-            <div class="stat-block reveal-fade">
-                <div class="stat-number-text">1 Day</div>
-                <div class="stat-label">Invite Only Forum</div>
-            </div>
-            <div class="stat-divider accent-expand-vertical"></div>
-            <div class="stat-block reveal-fade">
-                <div class="stat-number-text">Top Colleges</div>
-                <div class="stat-label">2 Per Institution</div>
-            </div>
-        </div>
-        <div class="overview-statement reveal-fade">
-            <p>"A focused room where presence carries weight."</p>
-        </div>
-    </section>
+    <!-- 4. PARTNERSHIP SECTION -->
+    <section id="partnership" class="partnership alt-bg reveal-up">
+        <div class="container">
+            <div class="section-label mb-2">WHAT THIS PARTNERSHIP UNLOCKS</div>
+            <h2 class="section-heading mb-4 reveal-up">Access to tomorrow's decision-makers. Today.</h2>
+            <p class="section-body mb-5 reveal-up">
+                Early access to high-potential student leaders who influence decisions within their colleges,
+                communities, and peer networks.
+            </p>
 
-    <!-- 4. WHAT THIS PARTNERSHIP UNLOCKS -->
-    <section id="partnership" class="partnership">
-        <div class="partnership-container">
-            <div class="partnership-header reveal-slide-right">
-                <h2 class="partnership-title">
-                    <span class="text-red">PARTNERSHIP</span><br>
-                    <span class="text-white">UNLOCKS</span>
-                </h2>
-                <p class="partnership-body">
-                    Early access to high-potential student leaders who influence decisions within their colleges, communities, and peer networks.
-                </p>
-            </div>
             <div class="cards-grid">
-                <div class="card reveal-fade-stagger">
-                    <div class="card-icon square"></div>
-                    <div class="card-label">Student Leaders</div>
+                <div class="card reveal-up-stagger">
+                    <div class="card-label">STUDENT LEADERS</div>
+                    <div class="card-desc">Engage with top-tier talent and future executives.</div>
                 </div>
-                <div class="card reveal-fade-stagger">
-                    <div class="card-icon circle"></div>
-                    <div class="card-label">Get Inspired</div>
+                <div class="card reveal-up-stagger">
+                    <div class="card-label">GET INSPIRED</div>
+                    <div class="card-desc">Exchange ideas with the sharpest young minds.</div>
                 </div>
-                <div class="card reveal-fade-stagger">
-                    <div class="card-icon triangle"></div>
-                    <div class="card-label">Share Opinions</div>
+                <div class="card reveal-up-stagger">
+                    <div class="card-label">SHARE OPINIONS</div>
+                    <div class="card-desc">Shape perspectives through strategic discourse.</div>
                 </div>
-                <div class="card reveal-fade-stagger">
-                    <div class="card-icon diamond"></div>
-                    <div class="card-label">Influence Mass</div>
+                <div class="card reveal-up-stagger">
+                    <div class="card-label">INFLUENCE MASS</div>
+                    <div class="card-desc">Amplify brand presence across leading campuses.</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 5. MODE OF ASSOCIATION -->
-    <section id="tiers" class="tiers">
-        <div class="tiers-container">
-            <div class="section-label-top reveal-fade">ASSOCIATE WITH JBC</div>
-            
-            <div class="tier-row premium reveal-slide-left">
-                <div class="tier-name">TITLE PARTNER</div>
-                <div class="tier-desc">Premium brand integration across all collaterals and highest stage presence.</div>
-            </div>
-            <hr class="tier-divider accent-expand-left">
+    <section id="tiers" class="tiers base-bg reveal-up">
+        <div class="container">
+            <div class="section-label mb-4">MODE OF ASSOCIATION</div>
 
-            <div class="tier-row reveal-slide-left">
-                <div class="tier-name">POWERED BY PARTNER</div>
-                <div class="tier-desc">Prominent co-branding throughout the conclave lifecycle.</div>
-            </div>
-            <hr class="tier-divider accent-expand-left">
+            <div class="tier-rows">
+                <div class="tier-row premium reveal-fade-left">
+                    <div class="tier-name">TITLE PARTNER</div>
+                    <div class="tier-line"></div>
+                    <div class="tier-desc">Premium brand integration across all collaterals.</div>
+                </div>
+                <div class="tier-row-divider"></div>
 
-            <div class="tier-row reveal-slide-left">
-                <div class="tier-name">CO-PARTNER</div>
-                <div class="tier-desc">Strategic visibility across key event touchpoints.</div>
-            </div>
-            <hr class="tier-divider accent-expand-left">
+                <div class="tier-row reveal-fade-left">
+                    <div class="tier-name">POWERED BY PARTNER</div>
+                    <div class="tier-line"></div>
+                    <div class="tier-desc">Prominent co-branding throughout the conclave.</div>
+                </div>
+                <div class="tier-row-divider"></div>
 
-            <div class="tier-row reveal-slide-left">
-                <div class="tier-name">CATEGORY PARTNER</div>
-                <div class="tier-desc">Targeted exposure within specific event segments.</div>
+                <div class="tier-row reveal-fade-left">
+                    <div class="tier-name">CO-PARTNER</div>
+                    <div class="tier-line"></div>
+                    <div class="tier-desc">Strategic visibility across key event touchpoints.</div>
+                </div>
+                <div class="tier-row-divider"></div>
+
+                <div class="tier-row reveal-fade-left">
+                    <div class="tier-name">CATEGORY PARTNER</div>
+                    <div class="tier-line"></div>
+                    <div class="tier-desc">Targeted exposure within specific segments.</div>
+                </div>
+                <div class="tier-row-divider"></div>
             </div>
-            <hr class="tier-divider accent-expand-left">
         </div>
     </section>
 
     <!-- 6. DELIVERABLES TABLE -->
-    <section id="deliverables" class="deliverables">
-        <div class="deliverables-container reveal-fade-table">
-            <h2 class="deliverables-heading">DELIVERABLES</h2>
-            <div class="table-wrapper">
+    <section id="deliverables" class="deliverables alt-bg reveal-up">
+        <div class="container">
+            <h2 class="section-heading mb-4 reveal-up">DELIVERABLES</h2>
+            <div class="table-wrapper reveal-up">
                 <table class="custom-table">
                     <thead>
                         <tr>
@@ -166,24 +175,133 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Event Naming Rights</td><td>✦</td><td>—</td><td>—</td><td>—</td></tr>
-                        <tr><td>Speaking Opportunity</td><td>✦</td><td>✦</td><td>OPT</td><td>—</td></tr>
-                        <tr><td>Category Exclusivity</td><td>✦</td><td>✦</td><td>—</td><td>—</td></tr>
-                        <tr><td>Stage Backdrop Branding</td><td>✦</td><td>✦</td><td>✦</td><td>✦</td></tr>
-                        <tr><td>Registration Desk Branding</td><td>✦</td><td>—</td><td>—</td><td>—</td></tr>
-                        <tr><td>Photo Wall Branding</td><td>✦</td><td>✦</td><td>✦</td><td>✦</td></tr>
-                        <tr><td>Lanyards & Badge Branding</td><td>✦</td><td>—</td><td>—</td><td>—</td></tr>
-                        <tr><td>Standee & Banner Placement</td><td>✦</td><td>✦</td><td>✦</td><td>✦</td></tr>
-                        <tr><td>Hoardings (Mumbai & Campus)</td><td>✦</td><td>✦</td><td>—</td><td>—</td></tr>
-                        <tr><td>Brand Film/Ad Screening</td><td>✦</td><td>✦</td><td>OPT</td><td>—</td></tr>
-                        <tr><td>Stage Mentions</td><td>✦</td><td>✦</td><td>✦</td><td>✦</td></tr>
-                        <tr><td>Pre-Event Digital Promotions</td><td>✦</td><td>✦</td><td>✦</td><td>✦</td></tr>
-                        <tr><td>Tagged Reels & Short Videos</td><td>✦</td><td>✦</td><td>✦</td><td>OPT</td></tr>
-                        <tr><td>Media Coverage Mentions</td><td>✦</td><td>✦</td><td>—</td><td>—</td></tr>
-                        <tr><td>Certificate Branding</td><td>✦</td><td>✦</td><td>✦</td><td>—</td></tr>
-                        <tr><td>Sponsored Hampers</td><td>✦</td><td>✦</td><td>OPT</td><td>OPT</td></tr>
-                        <tr><td>Coupon Inserts</td><td>✦</td><td>✦</td><td>✦</td><td>✦</td></tr>
-                        <tr><td>Post-Event Content Visibility</td><td>✦</td><td>✦</td><td>✦</td><td>OPT</td></tr>
+                        <!-- Rows -->
+                        <tr>
+                            <td>Event Naming Rights</td>
+                            <td>✦</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Speaking Opportunity</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>OPT</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Category Exclusivity</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Stage Backdrop Branding</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                        </tr>
+                        <tr>
+                            <td>Registration Desk Branding</td>
+                            <td>✦</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Photo Wall Branding</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                        </tr>
+                        <tr>
+                            <td>Lanyards & Badge Branding</td>
+                            <td>✦</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Standee & Banner Placement</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                        </tr>
+                        <tr>
+                            <td>Hoardings (Mumbai & Campus)</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Brand Film/Ad Screening</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>OPT</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Stage Mentions</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                        </tr>
+                        <tr>
+                            <td>Pre-Event Digital Promotions</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                        </tr>
+                        <tr>
+                            <td>Tagged Reels & Short Videos</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>OPT</td>
+                        </tr>
+                        <tr>
+                            <td>Media Coverage Mentions</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Certificate Branding</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Sponsored Hampers</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>OPT</td>
+                            <td>OPT</td>
+                        </tr>
+                        <tr>
+                            <td>Coupon Inserts</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                        </tr>
+                        <tr>
+                            <td>Post-Event Content Visibility</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>✦</td>
+                            <td>OPT</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -191,58 +309,64 @@
     </section>
 
     <!-- 7. PLATFORM CREDIBILITY SECTION -->
-    <section id="credibility" class="credibility">
-        <div class="credibility-container">
-            <h2 class="credibility-heading reveal-letter-space">CREDIBILITY</h2>
-            <div class="credibility-content reveal-slide-right">
-                <p class="credibility-text">
-                    Anchored by Jai Hind College, one of Mumbai's most respected academic institutions. With previous sponsors, industry speakers, and a driven organising team — JBC stands on credibility, continuity, and ambition.
-                </p>
-                <div class="platform-icons">
-                    <div class="platform">
-                        <div class="icon-circle">W</div>
-                        <div class="icon-label">Website</div>
-                    </div>
-                    <div class="platform">
-                        <div class="icon-circle">I</div>
-                        <div class="icon-label">Instagram</div>
-                    </div>
-                    <div class="platform">
-                        <div class="icon-circle">L</div>
-                        <div class="icon-label">LinkedIn</div>
-                    </div>
+    <section id="credibility" class="credibility base-bg reveal-up">
+        <div class="container">
+            <div class="section-label mb-2">PLATFORM CREDIBILITY</div>
+            <h2 class="section-heading mb-4 reveal-up">Built on institutional trust. Backed by a decade of ambition.
+            </h2>
+            <p class="section-body mb-5 reveal-up">
+                Anchored by Jai Hind College, one of Mumbai's most respected academic institutions. With verified
+                sponsors, industry speakers, and a driven organising team — JBC 2026 stands on credibility, continuity,
+                and long-term impact.
+            </p>
+            <div class="platform-icons reveal-up">
+                <div class="platform">
+                    <div class="icon-circle"></div>
+                    <div class="icon-label">WEBSITE</div>
+                </div>
+                <div class="platform">
+                    <div class="icon-circle"></div>
+                    <div class="icon-label">INSTAGRAM</div>
+                </div>
+                <div class="platform">
+                    <div class="icon-circle"></div>
+                    <div class="icon-label">LINKEDIN</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 8. CLOSING / CONTACT SECTION -->
-    <section id="contact" class="contact">
-        <div class="contact-container">
-            <h2 class="closing-statement">
-                <span class="closing-line1 reveal-fade">THE NEXT CHAPTER</span><br>
-                <span class="closing-line2 reveal-sweep-right">STARTS HERE</span>
+    <section id="contact" class="contact dark-bg">
+        <div class="container text-center">
+            <h2 class="closing-heading">
+                <span class="closing-word reveal-fade-word">THE</span>
+                <span class="closing-word reveal-fade-word">NEXT</span>
+                <span class="closing-word reveal-fade-word">CHAPTER</span><br>
+                <span class="closing-word-red reveal-slide-right">STARTS HERE</span>
             </h2>
-            <hr class="closing-divider accent-expand">
-            
+            <div class="closing-div-rule"></div>
+
             <div class="contact-cards">
-                <div class="contact-card reveal-fade-stagger">
+                <div class="contact-card reveal-up-stagger">
                     <div class="contact-name">Veer Wadhwa</div>
                     <div class="contact-role">VP Marketing</div>
                     <div class="contact-phone">+91 99200 65646</div>
                 </div>
-                <div class="contact-card reveal-fade-stagger">
+                <div class="contact-card reveal-up-stagger">
                     <div class="contact-name">Karishmaa Peswani</div>
                     <div class="contact-role">Deputy Secretary</div>
                     <div class="contact-phone">+91 93729 80380</div>
                 </div>
             </div>
-            
-            <a href="mailto:jaihindbusinessconclave25@gmail.com" class="contact-email reveal-fade">jaihindbusinessconclave25@gmail.com</a>
+
+            <a href="mailto:jaihindbusinessconclave25@gmail.com"
+                class="contact-email reveal-up">jaihindbusinessconclave25@gmail.com</a>
         </div>
     </section>
 
     <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
+
 </html>
