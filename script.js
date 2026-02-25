@@ -30,6 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Mobile Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                document.querySelector('.nav-links').classList.remove('nav-active');
+                if (hamburger) hamburger.classList.remove('toggle');
+            }
+        });
+    });
+
 
     /* --- INITIAL HERO ANIMATION --- */
     setTimeout(() => {
