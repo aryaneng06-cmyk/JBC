@@ -336,37 +336,34 @@ button:hover,
   height: 85vh;
 }
 
-.hero-content {
+.hero-wrapper {
+  position: relative;
+  height: 85vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -5vh;
-  /* adjust optical center */
+  overflow: hidden;
 }
 
-.jbc-logo-wrapper {
-  position: relative;
-  display: inline-block;
-  line-height: 1;
+.hero-layer {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  will-change: transform;
+  transition: none;
 }
 
-.jbc-letters {
+.layer-letters {
   font-family: "DM Serif Display", serif;
   font-size: clamp(100px, 16vw, 200px);
   font-weight: 400;
   color: #1a1a1a;
   letter-spacing: -0.04em;
   line-height: 0.85;
-  display: block;
-  user-select: none;
+  z-index: 2;
 }
 
-.jbc-wordmark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.layer-wordmark {
   font-family: "DM Sans", sans-serif;
   font-size: clamp(9px, 1.1vw, 13px);
   font-weight: 400;
@@ -376,7 +373,22 @@ button:hover,
   text-transform: uppercase;
   background: #ffffff;
   padding: 4px 12px;
-  margin-top: 12px;
+  display: inline-block;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.layer-tagline {
+  top: 62%;
+  z-index: 4;
+}
+
+.layer-scroll {
+  bottom: 32px;
+  top: auto;
+  z-index: 5;
 }
 
 .hero-tagline {
@@ -386,20 +398,16 @@ button:hover,
   font-size: 15px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: 0;
-  /* for animation */
-  transform: translateY(10px);
+  margin-bottom: 8px;
 }
 
-.hero-bottom {
-  position: absolute;
-  bottom: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
+.hero-date {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888580;
 }
 
 .hero-red-rule {
@@ -467,6 +475,64 @@ button:hover,
   margin-bottom: 32px;
   padding: 48px 2rem;
   gap: 32px;
+}
+
+.stat-dots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot-label-top {
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dot-grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  gap: 6px;
+  width: fit-content;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c8102e;
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.dot.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dot.active:hover {
+  background: #ff2040;
+  transform: scale(1.4);
+  cursor: default;
+}
+
+.dot-counter {
+  font-family: "DM Serif Display", serif;
+  font-size: 52px;
+  color: #c8102e;
+  line-height: 1;
+}
+
+.stat-vdivider {
+  width: 1px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .stat-block {
@@ -1186,6 +1252,28 @@ button:hover,
   transition: opacity 0.4s ease;
 }
 
+/* --- CURSOR TRAIL --- */
+#cursor-trail {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+}
+
+.trail-dot {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c8102e;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.1s ease;
+  z-index: 99999;
+}
+
 /* --- RESPONSIVE BREAKPOINTS --- */
 @media (max-width: 1024px) {
   .cards-grid {
@@ -1345,6 +1433,16 @@ button:hover,
     letter-spacing: 0.15em;
     padding: 3px 8px;
   }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .dot-grid {
+    grid-template-columns: repeat(10, 1fr);
+    gap: 4px;
+  }
 }
 
 /* =========================================
@@ -1502,6 +1600,11 @@ body.dark-mode .scroll-indicator {
   background: rgba(255, 255, 255, 0.2);
 }
 
+body.dark-mode .layer-wordmark {
+  background: #0a0a0f;
+  color: #ffffff;
+}
+
 /* STAT BLOCKS */
 body.dark-mode .stat-number {
   color: #c8102e;
@@ -1510,6 +1613,11 @@ body.dark-mode .stat-number {
 
 body.dark-mode .stat-label {
   color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .dot {
+  background: #c8102e;
+  box-shadow: 0 0 6px rgba(200, 16, 46, 0.5);
 }
 
 body.dark-mode .stat-divider {

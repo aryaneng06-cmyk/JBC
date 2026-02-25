@@ -126,17 +126,23 @@
 
     <!-- 1. HERO SECTION -->
     <section id="hero" class="hero">
-      <div class="hero-content">
-        <div class="jbc-logo-wrapper">
-          <div class="jbc-letters">JBC</div>
-          <h1 class="jbc-wordmark">— JAI HIND BUSINESS CONCLAVE —</h1>
+      <div class="hero-wrapper">
+        <div class="hero-layer layer-orbs"></div>
+        <!-- slowest: 0.1x scroll speed -->
+        <div class="hero-layer layer-letters">JBC</div>
+        <!-- slow: 0.3x scroll speed -->
+        <div class="hero-layer layer-wordmark">
+          — JAI HIND BUSINESS CONCLAVE —
         </div>
-        <p class="hero-tagline">WHERE INDIA'S BUSINESS LEADERS ARE SHAPED</p>
-      </div>
-      <div class="hero-bottom">
-        <div class="hero-red-rule"></div>
-        <div class="hero-date-location">
-          5TH JUNE 2026 &middot; TAJ PRESIDENT, MUMBAI
+        <!-- medium: 0.5x scroll speed -->
+        <div class="hero-layer layer-tagline">
+          <!-- faster: 0.7x scroll speed -->
+          <p class="hero-tagline">WHERE INDIA'S BUSINESS LEADERS ARE SHAPED</p>
+          <p class="hero-date">5TH JUNE 2026 &middot; TAJ PRESIDENT, MUMBAI</p>
+        </div>
+        <div class="hero-layer layer-scroll">
+          <!-- fastest: 1x scroll speed -->
+          <div class="scroll-indicator"></div>
         </div>
       </div>
     </section>
@@ -164,20 +170,30 @@
     <!-- 3. OVERVIEW / EVENT STATS -->
     <section id="overview" class="overview reveal-up">
       <div class="container glass-dark">
-        <div class="stats-row">
-          <div class="stat-block glass reveal-up-stagger">
-            <div class="stat-number" data-target="150">0</div>
-            <div class="stat-label">Shortlisted Students</div>
+        <div class="stats-row stats-section">
+          <!-- DOT GRID — 150 students -->
+          <div class="stat-block stat-dots reveal-up-stagger">
+            <div class="dot-label-top">SHORTLISTED STUDENTS</div>
+            <div class="dot-grid" id="dotGrid"></div>
+            <div class="dot-counter"><span id="dotCount">0</span></div>
           </div>
-          <div class="stat-vertical-rule"></div>
-          <div class="stat-block glass reveal-up-stagger">
+
+          <!-- Divider -->
+          <div class="stat-vdivider"></div>
+
+          <!-- Stat 2 -->
+          <div class="stat-block reveal-up-stagger">
             <div class="stat-number-text">1 Day</div>
-            <div class="stat-label">Invite Only Forum</div>
+            <div class="stat-label">INVITE ONLY FORUM</div>
           </div>
-          <div class="stat-vertical-rule"></div>
-          <div class="stat-block glass reveal-up-stagger">
+
+          <!-- Divider -->
+          <div class="stat-vdivider"></div>
+
+          <!-- Stat 3 -->
+          <div class="stat-block reveal-up-stagger">
             <div class="stat-number-text">2 Per Inst.</div>
-            <div class="stat-label">Top Colleges Across India</div>
+            <div class="stat-label">TOP COLLEGES ACROSS INDIA</div>
           </div>
         </div>
         <div class="overview-quote reveal-up">
@@ -798,6 +814,9 @@
     <button id="theme-toggle" aria-label="Toggle dark mode">
       <span class="toggle-icon">☽</span>
     </button>
+
+    <!-- Cursor Trail -->
+    <div id="cursor-trail"></div>
 
     <!-- Custom JS -->
     <script src="script.js"></script>

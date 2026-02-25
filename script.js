@@ -215,4 +215,137 @@ document.addEventListener("DOMContentLoaded", () => {
       toggle.style.transform = "";
     }, 200);
   });
+
+  /* --- 1. PARALLAX HERO --- */
+  const isMobile = window.innerWidth <= 768;
+  if (!isMobile) {
+    const parallaxLayers = [
+      { el: document.querySelector(".layer-orbs"), speed: 0.1 },
+      { el: document.querySelector(".layer-letters"), speed: 0.3 },
+      { el: document.querySelector(".layer-wordmark"), speed: 0.5 },
+      { el: document.querySelector(".layer-tagline"), speed: 0.7 },
+    ];
+
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      parallaxLayers.forEach(({ el, speed }) => {
+        if (!el) return;
+        el.style.transform = `translateY(${scrollY * speed}px)`;
+      });
+    });
+  }
+
+  /* --- 2. DOT INFOGRAPHIC --- */
+  const dotGrid = document.getElementById("dotGrid");
+  const dotCount = document.getElementById("dotCount");
+  let dotsAnimated = false;
+
+  if (dotGrid) {
+    // Create 150 dots
+    for (let i = 0; i < 150; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      dotGrid.appendChild(dot);
+    }
+
+    const dots = dotGrid.querySelectorAll(".dot");
+
+    function animateDots() {
+      if (dotsAnimated) return;
+      dotsAnimated = true;
+      let count = 0;
+      dots.forEach((dot, i) => {
+        setTimeout(() => {
+          dot.classList.add("active");
+          count++;
+          if (dotCount) dotCount.textContent = count;
+        }, i * 18); // 18ms per dot = ~2.7s total
+      });
+    }
+
+    // Trigger on scroll into view
+    const dotObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) animateDots();
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    const statsSection = document.getElementById("overview");
+    if (statsSection) dotObserver.observe(statsSection);
+  }
+
+  /* --- 3. CURSOR TRAIL --- */
+  const trailCount = 5;
+  const trailDots = [];
+
+  for (let i = 0; i < trailCount; i++) {
+    const dot = document.createElement("div");
+    dot.classList.add("trail-dot");
+    dot.style.width = `${6 - i}px`;
+    dot.style.height = `${6 - i}px`;
+    dot.style.opacity = `${((trailCount - i) / trailCount) * 0.6}`;
+    document.body.appendChild(dot);
+    trailDots.push({ el: dot, x: 0, y: 0 });
+  }
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateTrail() {
+    let x = mouseX;
+    let y = mouseY;
+
+    trailDots.forEach((dot, i) => {
+      // Logic for staggered follow caching
+      const prevX = dot.x;
+      const prevY = dot.y;
+
+      dot.x = i === 0 ? x : trailDots[i - 1].x;
+      dot.y = i === 0 ? y : trailDots[i - 1].y;
+
+      dot.el.style.left = `${dot.x}px`;
+      dot.el.style.top = `${dot.y}px`;
+      dot.el.style.opacity = `${((trailCount - i) / trailCount) * 0.5}`;
+    });
+
+    requestAnimationFrame(animateTrail);
+  }
+
+  animateTrail();
+
+  // Hide trail when mouse leaves window
+  document.addEventListener("mouseleave", () => {
+    trailDots.forEach((dot) => (dot.el.style.opacity = "0"));
+  });
+
+  // On hover over clickable elements — trail glows brighter and grows
+  document.querySelectorAll("a, button, .card").forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      trailDots.forEach((dot) => {
+        dot.el.style.background = "#FF2040";
+        dot.el.style.transform = "translate(-50%, -50%) scale(1.8)";
+        dot.el.style.boxShadow = "0 0 8px rgba(200, 16, 46, 0.6)";
+      });
+    });
+    el.addEventListener("mouseleave", () => {
+      trailDots.forEach((dot) => {
+        dot.el.style.background = "#C8102E";
+        dot.el.style.transform = "translate(-50%, -50%) scale(1)";
+        dot.el.style.boxShadow = "none";
+      });
+    });
+  });
+
+  // Disable on mobile — no cursor on touch devices
+  if ("ontouchstart" in window) {
+    trailDots.forEach((dot) => (dot.el.style.display = "none"));
+  }
 });
