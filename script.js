@@ -80,22 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* --- LIQUID RIPPLE EFFECT (LIGHT) --- */
-  document.querySelectorAll(".glass, .glass-dark, .glass-red").forEach((el) => {
-    el.addEventListener("mousemove", (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      el.style.background = `radial-gradient(circle at ${x}% ${y}%,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(255, 255, 255, 0.6) 40%,
-        rgba(240, 238, 235, 0.5) 100%)`;
-    });
-    el.addEventListener("mouseleave", () => {
-      el.style.background = "";
-    });
-  });
-
   /* --- SCROLL ANIMATIONS (INTERSECTION OBSERVER) --- */
   const observerOptions = {
     root: null,
