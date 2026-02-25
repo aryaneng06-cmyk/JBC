@@ -336,34 +336,37 @@ button:hover,
   height: 85vh;
 }
 
-.hero-wrapper {
-  position: relative;
-  height: 85vh;
+.hero-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  margin-top: -5vh;
+  /* adjust optical center */
 }
 
-.hero-layer {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  will-change: transform;
-  transition: none;
+.jbc-logo-wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
 }
 
-.layer-letters {
+.jbc-letters {
   font-family: "DM Serif Display", serif;
   font-size: clamp(100px, 16vw, 200px);
   font-weight: 400;
   color: #1a1a1a;
   letter-spacing: -0.04em;
   line-height: 0.85;
-  z-index: 2;
+  display: block;
+  user-select: none;
 }
 
-.layer-wordmark {
+.jbc-wordmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-family: "DM Sans", sans-serif;
   font-size: clamp(9px, 1.1vw, 13px);
   font-weight: 400;
@@ -373,22 +376,7 @@ button:hover,
   text-transform: uppercase;
   background: #ffffff;
   padding: 4px 12px;
-  display: inline-block;
-  z-index: 3;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.layer-tagline {
-  top: 62%;
-  z-index: 4;
-}
-
-.layer-scroll {
-  bottom: 32px;
-  top: auto;
-  z-index: 5;
+  margin-top: 12px;
 }
 
 .hero-tagline {
@@ -398,16 +386,20 @@ button:hover,
   font-size: 15px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  opacity: 0;
+  /* for animation */
+  transform: translateY(10px);
 }
 
-.hero-date {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #888580;
+.hero-bottom {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
 }
 
 .hero-red-rule {
@@ -1598,11 +1590,6 @@ body.dark-mode .hero-date {
 
 body.dark-mode .scroll-indicator {
   background: rgba(255, 255, 255, 0.2);
-}
-
-body.dark-mode .layer-wordmark {
-  background: #0a0a0f;
-  color: #ffffff;
 }
 
 /* STAT BLOCKS */

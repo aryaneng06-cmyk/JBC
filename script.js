@@ -216,25 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 200);
   });
 
-  /* --- 1. PARALLAX HERO --- */
-  const isMobile = window.innerWidth <= 768;
-  if (!isMobile) {
-    const parallaxLayers = [
-      { el: document.querySelector(".layer-orbs"), speed: 0.1 },
-      { el: document.querySelector(".layer-letters"), speed: 0.3 },
-      { el: document.querySelector(".layer-wordmark"), speed: 0.5 },
-      { el: document.querySelector(".layer-tagline"), speed: 0.7 },
-    ];
-
-    window.addEventListener("scroll", () => {
-      const scrollY = window.scrollY;
-      parallaxLayers.forEach(({ el, speed }) => {
-        if (!el) return;
-        el.style.transform = `translateY(${scrollY * speed}px)`;
-      });
-    });
-  }
-
   /* --- 2. DOT INFOGRAPHIC --- */
   const dotGrid = document.getElementById("dotGrid");
   const dotCount = document.getElementById("dotCount");
