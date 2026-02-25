@@ -4,11 +4,11 @@
 */
 
 :root {
-  --black: #ffffff;
-  --charcoal: rgba(255, 255, 255, 0.75);
+  --black: #1a1a1a;
+  --charcoal: #2c2c2c;
   --red: #c8102e;
-  --muted: rgba(255, 255, 255, 0.45);
-  --rule: rgba(255, 255, 255, 0.1);
+  --muted: #888580;
+  --rule: rgba(0, 0, 0, 0.08);
 
   --font-heading: "DM Serif Display", serif;
   --font-body: "DM Sans", sans-serif;
@@ -37,14 +37,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  background: linear-gradient(
-    135deg,
-    #0a0a0f 0%,
-    #1a0a0a 25%,
-    #0f0a1a 50%,
-    #1a0505 75%,
-    #0a0a0f 100%
-  );
+  background: #ffffff;
   background-attachment: fixed;
   position: relative;
 }
@@ -52,13 +45,13 @@ body {
 body::before {
   content: "";
   position: fixed;
-  top: -20%;
+  top: -10%;
   left: -10%;
   width: 600px;
   height: 600px;
   background: radial-gradient(
     circle,
-    rgba(200, 16, 46, 0.25) 0%,
+    rgba(200, 16, 46, 0.08) 0%,
     transparent 70%
   );
   filter: blur(80px);
@@ -70,13 +63,13 @@ body::before {
 body::after {
   content: "";
   position: fixed;
-  bottom: -20%;
+  bottom: -10%;
   right: -10%;
   width: 700px;
   height: 700px;
   background: radial-gradient(
     circle,
-    rgba(100, 60, 200, 0.15) 0%,
+    rgba(200, 16, 46, 0.05) 0%,
     transparent 70%
   );
   filter: blur(100px);
@@ -118,47 +111,41 @@ a {
 
 /* Glass Wrapper Styles */
 .glass {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 1);
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    0 1px 0 rgba(255, 255, 255, 0.1) inset,
-    0 -1px 0 rgba(0, 0, 0, 0.2) inset;
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    0 1px 0 rgba(255, 255, 255, 1) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.04) inset;
   border-radius: 16px;
-  will-change: transform, backdrop-filter;
-  transform: translateZ(0);
 }
 
 .glass-dark {
-  background: rgba(10, 10, 15, 0.45);
+  background: rgba(240, 238, 235, 0.6);
   backdrop-filter: blur(32px) saturate(200%);
   -webkit-backdrop-filter: blur(32px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow:
-    0 16px 48px rgba(0, 0, 0, 0.6),
-    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+    0 16px 48px rgba(0, 0, 0, 0.07),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
   border-radius: 16px;
-  will-change: transform, backdrop-filter;
-  transform: translateZ(0);
 }
 
 .glass-red {
-  background: rgba(200, 16, 46, 0.18);
+  background: rgba(200, 16, 46, 0.07);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(200, 16, 46, 0.35);
-  border-top: 1px solid rgba(255, 80, 80, 0.4);
+  border: 1px solid rgba(200, 16, 46, 0.2);
+  border-top: 1px solid rgba(200, 16, 46, 0.3);
   box-shadow:
-    0 8px 32px rgba(200, 16, 46, 0.25),
-    0 1px 0 rgba(255, 120, 120, 0.2) inset;
+    0 8px 32px rgba(200, 16, 46, 0.1),
+    0 1px 0 rgba(255, 180, 180, 0.2) inset;
   border-radius: 12px;
-  will-change: transform, backdrop-filter;
-  transform: translateZ(0);
 }
 
 .container {
@@ -249,16 +236,16 @@ button:hover,
 
 .navbar.scrolled {
   transform: translateY(0);
-  background: rgba(10, 10, 15, 0.45);
-  backdrop-filter: blur(32px) saturate(200%);
-  -webkit-backdrop-filter: blur(32px) saturate(200%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .nav-logo {
   font-family: var(--font-heading);
   font-size: 18px;
-  color: #ffffff;
+  color: #1a1a1a;
 }
 
 .nav-links {
@@ -272,7 +259,7 @@ button:hover,
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.7);
+  color: #888580;
   position: relative;
 }
 
@@ -293,7 +280,7 @@ button:hover,
 }
 
 .nav-link:hover {
-  color: #ffffff;
+  color: #1a1a1a;
 }
 
 .nav-link:hover::after,
@@ -313,7 +300,7 @@ button:hover,
   display: block;
   width: 25px;
   height: 2px;
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   transition: all 0.3s ease;
 }
 
@@ -392,7 +379,7 @@ button:hover,
 .hero-tagline {
   font-family: var(--font-body);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.55);
+  color: #1a1a1a;
   font-size: 15px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -415,7 +402,7 @@ button:hover,
 .hero-red-rule {
   width: 1px;
   height: 60px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
   margin-bottom: 1.5rem;
 }
 
@@ -425,7 +412,7 @@ button:hover,
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: #888580;
 }
 
 /* --- 2. ABOUT SECTION --- */
@@ -487,7 +474,6 @@ button:hover,
   font-family: var(--font-heading);
   font-size: clamp(48px, 6vw, 64px);
   color: #c8102e;
-  text-shadow: 0 0 30px rgba(200, 16, 46, 0.5);
   line-height: 1;
   margin-bottom: 0.5rem;
 }
@@ -503,7 +489,7 @@ button:hover,
 .stat-vertical-rule {
   width: 1px;
   height: 60px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .overview-quote {
@@ -536,11 +522,12 @@ button:hover,
 
 .card:hover {
   transform: translateY(-6px) scale(1.02);
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(200, 16, 46, 0.4);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(200, 16, 46, 0.25);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(200, 16, 46, 0.15);
+    0 20px 60px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(200, 16, 46, 0.06);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .card-label {
@@ -557,7 +544,7 @@ button:hover,
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
+  color: #888580;
   line-height: 1.6;
 }
 
@@ -576,20 +563,20 @@ button:hover,
   justify-content: space-between;
   align-items: center;
   padding: 2.5rem 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   transition: transform 0.3s ease;
 }
 
 .tier-row.premium {
-  background: rgba(200, 16, 46, 0.08);
+  background: rgba(200, 16, 46, 0.04);
   border-left: 2px solid #c8102e;
 }
 
 .tier-name {
   font-family: var(--font-heading);
   font-size: clamp(18px, 2.5vw, 22px);
-  color: #ffffff;
+  color: #1a1a1a;
   flex: 0 0 250px;
 }
 
@@ -603,7 +590,7 @@ button:hover,
   font-family: var(--font-body);
   font-weight: 300;
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #888580;
   flex: 0 0 400px;
   text-align: right;
 }
@@ -635,7 +622,7 @@ button:hover,
 }
 
 .custom-table th {
-  background-color: rgba(200, 16, 46, 0.25);
+  background-color: #1a1a1a;
   color: #fff;
   font-family: var(--font-body);
   font-size: 11px;
@@ -650,15 +637,15 @@ button:hover,
 }
 
 .custom-table tbody tr:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .custom-table tbody tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.06);
+  background-color: rgba(245, 243, 240, 0.6);
 }
 
 .custom-table tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(200, 16, 46, 0.04);
 }
 
 .custom-table td {
@@ -702,7 +689,7 @@ button:hover,
 .icon-circle {
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 50%;
   transition: border-color 0.3s ease;
 }
@@ -721,8 +708,6 @@ button:hover,
 }
 
 /* --- 8. LOCATION SECTION --- */
-#location {
-}
 
 .location-subtext {
   font-family: var(--font-body);
@@ -757,7 +742,7 @@ button:hover,
 .venue-name {
   font-family: var(--font-heading);
   font-size: 26px;
-  color: #ffffff;
+  color: #1a1a1a;
   margin-bottom: 1.5rem;
 }
 
@@ -810,7 +795,8 @@ button:hover,
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 12px 28px;
   transition: all 0.25s ease;
   text-align: center;
@@ -866,10 +852,10 @@ button:hover,
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: rgba(245, 243, 240, 0.6);
   backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   height: 100px;
   overflow: hidden;
   display: flex;
@@ -912,14 +898,17 @@ button:hover,
   width: auto;
   object-fit: contain;
   opacity: 0.85;
+  filter: grayscale(100%) brightness(80%);
   transition:
     opacity 0.2s,
-    transform 0.2s;
+    transform 0.2s,
+    filter 0.3s;
 }
 
 .logo-item:hover img {
   opacity: 1;
   transform: scale(1.05);
+  filter: grayscale(0%) brightness(100%);
 }
 
 .logo-sep {
@@ -948,7 +937,8 @@ button:hover,
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 12px 32px;
   transition: all 0.25s ease;
   text-align: center;
@@ -973,7 +963,7 @@ button:hover,
   font-family: var(--font-heading);
   font-size: clamp(42px, 8vw, 64px);
   line-height: 1.1;
-  color: #fff;
+  color: #1a1a1a;
   margin-bottom: 2rem;
 }
 
@@ -985,7 +975,6 @@ button:hover,
 
 .closing-word-red {
   color: #c8102e;
-  text-shadow: 0 0 60px rgba(200, 16, 46, 0.4);
   transform: translateX(30px);
 }
 
@@ -1011,7 +1000,7 @@ button:hover,
 .contact-name {
   font-family: var(--font-heading);
   font-size: 24px;
-  color: #fff;
+  color: #1a1a1a;
   margin-bottom: 0.5rem;
 }
 
@@ -1020,7 +1009,7 @@ button:hover,
   font-family: var(--font-body);
   font-weight: 300;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #888580;
 }
 
 .contact-role {
@@ -1030,7 +1019,7 @@ button:hover,
 .contact-email {
   font-family: var(--font-body);
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #888580;
   position: relative;
 }
 
