@@ -371,31 +371,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const roiCalculator = document.getElementById('roi-calc');
   if (roiCalculator) {
     const tierMultipliers = {
-      title: { students: 1.0, impressions: 1.0, media: 1.0, digital: 1.0 },
-      powered: { students: 0.80, impressions: 0.75, media: 0.75, digital: 0.85 },
-      co: { students: 0.55, impressions: 0.50, media: 0.55, digital: 0.60 },
-      category: { students: 0.35, impressions: 0.30, media: 0.35, digital: 0.40 }
+      title: { students: 1.00, impressions: 1.00, posts: 1.00, media: 1.00 },
+      powered: { students: 0.80, impressions: 0.80, posts: 0.70, media: 0.75 },
+      co: { students: 0.60, impressions: 0.55, posts: 0.50, media: 0.50 },
+      category: { students: 0.40, impressions: 0.35, posts: 0.30, media: 0.00 }
     };
 
     const baseValues = {
-      students: (colleges) => colleges * 6,
-      impressions: (colleges) => colleges * 850,
-      media: (colleges) => Math.round(colleges * 0.8),
-      digital: (colleges) => Math.round(colleges * 1.4)
+      students: (colleges) => colleges * 10,
+      impressions: (colleges) => colleges * 800,
+      posts: (colleges) => Math.min(Math.round(colleges * 0.65), 10),
+      media: (colleges) => Math.max(Math.round(colleges / 5), 1)
     };
 
     let currentTier = 'title';
-    let currentColleges = 25;
+    let currentColleges = 10;
 
     function formatNumber(n) {
-      if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+      if (n >= 1000) return n.toLocaleString('en-IN');
       return n.toString();
     }
 
     function animateValue(el, target) {
       if (!el) return;
+
+      if (target === 0) {
+        el.textContent = '—';
+        el.style.fontSize = '28px';
+        el.style.color = '#888580';
+        return;
+      }
+
+      el.style.fontSize = '';
+      el.style.color = '';
+
       const start = 0;
-      const duration = 800;
+      const duration = 600;
       const startTime = performance.now();
 
       function update(currentTime) {
@@ -416,13 +427,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const students = Math.round(baseValues.students(colleges) * mult.students);
       const impressions = Math.round(baseValues.impressions(colleges) * mult.impressions);
+      const posts = Math.round(baseValues.posts(colleges) * mult.posts);
       const media = Math.round(baseValues.media(colleges) * mult.media);
-      const digital = Math.round(baseValues.digital(colleges) * mult.digital);
 
       animateValue(document.getElementById('res-students'), students);
       animateValue(document.getElementById('res-impressions'), impressions);
+      animateValue(document.getElementById('res-posts'), posts);
       animateValue(document.getElementById('res-media'), media);
-      animateValue(document.getElementById('res-digital'), digital);
     }
 
     // Tier buttons

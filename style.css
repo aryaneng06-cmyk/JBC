@@ -2075,6 +2075,14 @@ body.dark-mode .contact-email:hover {
   color: #888580;
 }
 
+.roi-result-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  color: #888580;
+  margin-top: 4px;
+  font-style: italic;
+}
+
 /* CTA ROW */
 .roi-cta-row {
   display: flex;
@@ -2141,6 +2149,10 @@ body.dark-mode .roi-result-card {
 body.dark-mode .roi-result-number {
   color: #ff2040;
   text-shadow: 0 0 20px rgba(200, 16, 46, 0.4);
+}
+
+body.dark-mode .roi-result-sub {
+  color: rgba(255, 255, 255, 0.3);
 }
 
 body.dark-mode .roi-cta-row {
