@@ -366,4 +366,118 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  /* --- 8. SPONSOR ROI CALCULATOR --- */
+  const roiCalculator = document.getElementById('roi-calc');
+  if (roiCalculator) {
+    const tierMultipliers = {
+      title: { students: 1.0, impressions: 1.0, media: 1.0, digital: 1.0 },
+      powered: { students: 0.80, impressions: 0.75, media: 0.75, digital: 0.85 },
+      co: { students: 0.55, impressions: 0.50, media: 0.55, digital: 0.60 },
+      category: { students: 0.35, impressions: 0.30, media: 0.35, digital: 0.40 }
+    };
+
+    const baseValues = {
+      students: (colleges) => colleges * 6,
+      impressions: (colleges) => colleges * 850,
+      media: (colleges) => Math.round(colleges * 0.8),
+      digital: (colleges) => Math.round(colleges * 1.4)
+    };
+
+    let currentTier = 'title';
+    let currentColleges = 25;
+
+    function formatNumber(n) {
+      if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+      return n.toString();
+    }
+
+    function animateValue(el, target) {
+      if (!el) return;
+      const start = 0;
+      const duration = 800;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(start + (target - start) * eased);
+        el.textContent = formatNumber(current);
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    function updateROI() {
+      const mult = tierMultipliers[currentTier];
+      const colleges = currentColleges;
+
+      const students = Math.round(baseValues.students(colleges) * mult.students);
+      const impressions = Math.round(baseValues.impressions(colleges) * mult.impressions);
+      const media = Math.round(baseValues.media(colleges) * mult.media);
+      const digital = Math.round(baseValues.digital(colleges) * mult.digital);
+
+      animateValue(document.getElementById('res-students'), students);
+      animateValue(document.getElementById('res-impressions'), impressions);
+      animateValue(document.getElementById('res-media'), media);
+      animateValue(document.getElementById('res-digital'), digital);
+    }
+
+    // Tier buttons
+    document.querySelectorAll('.tier-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTier = btn.dataset.tier;
+        updateROI();
+      });
+    });
+
+    // Slider
+    const slider = document.getElementById('campusSlider');
+    const campusValue = document.getElementById('campusValue');
+
+    if (slider && campusValue) {
+      slider.addEventListener('input', () => {
+        currentColleges = parseInt(slider.value);
+        campusValue.textContent = `${currentColleges} Colleges`;
+        updateROI();
+      });
+    }
+
+    // Initial render
+    updateROI();
+  }
+
+  /* --- 9. WAX SEAL STAMP ANIMATION --- */
+  const waxSeal = document.getElementById('waxSeal');
+  let sealStamped = false;
+
+  if (waxSeal) {
+    const sealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !sealStamped) {
+          sealStamped = true;
+
+          // Small delay for dramatic effect
+          setTimeout(() => {
+            waxSeal.classList.add('stamped');
+          }, 300);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sealObserver.observe(waxSeal);
+
+    // On click — re-stamp with a fresh animation
+    waxSeal.addEventListener('click', () => {
+      waxSeal.classList.remove('stamped');
+      waxSeal.offsetHeight; // force reflow
+      setTimeout(() => {
+        waxSeal.classList.add('stamped');
+      }, 50);
+    });
+  }
 });

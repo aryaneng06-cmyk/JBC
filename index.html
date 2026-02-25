@@ -212,6 +212,69 @@
           </div>
         </div>
       </div>
+
+      <!-- SPONSOR ROI CALCULATOR -->
+      <div class="roi-calculator glass" id="roi-calc">
+        <div class="roi-header">
+          <div class="section-label">PARTNERSHIP INTELLIGENCE</div>
+          <h3 class="roi-title">Calculate Your Brand Impact</h3>
+          <p class="roi-subtitle">Select a partnership tier and see your projected reach across the JBC 2026 platform.
+          </p>
+        </div>
+
+        <div class="roi-body">
+
+          <!-- TIER SELECTOR -->
+          <div class="roi-tier-selector">
+            <button class="tier-btn active" data-tier="title">Title Partner</button>
+            <button class="tier-btn" data-tier="powered">Powered By</button>
+            <button class="tier-btn" data-tier="co">Co-Partner</button>
+            <button class="tier-btn" data-tier="category">Category Partner</button>
+          </div>
+
+          <!-- SLIDER -->
+          <div class="roi-slider-block">
+            <label class="roi-slider-label">
+              Target Campus Reach
+              <span class="roi-slider-value" id="campusValue">25 Colleges</span>
+            </label>
+            <input type="range" id="campusSlider" min="10" max="75" value="25" step="5" class="roi-slider" />
+            <div class="roi-slider-track-labels">
+              <span>10 Colleges</span>
+              <span>75 Colleges</span>
+            </div>
+          </div>
+
+          <!-- RESULTS GRID -->
+          <div class="roi-results">
+            <div class="roi-result-card">
+              <div class="roi-result-number" id="res-students">0</div>
+              <div class="roi-result-label">STUDENT TOUCHPOINTS</div>
+            </div>
+            <div class="roi-result-card">
+              <div class="roi-result-number" id="res-impressions">0</div>
+              <div class="roi-result-label">ESTIMATED IMPRESSIONS</div>
+            </div>
+            <div class="roi-result-card">
+              <div class="roi-result-number" id="res-media">0</div>
+              <div class="roi-result-label">MEDIA MENTIONS</div>
+            </div>
+            <div class="roi-result-card">
+              <div class="roi-result-number" id="res-digital">0</div>
+              <div class="roi-result-label">DIGITAL POSTS</div>
+            </div>
+          </div>
+
+          <!-- CTA BELOW RESULTS -->
+          <div class="roi-cta-row">
+            <p class="roi-disclaimer">*Projections are estimates based on platform reach and past edition data.</p>
+            <a href="mailto:jaihindbusinessconclave25@gmail.com" class="roi-cta-btn">
+              LOCK THIS TIER &rarr;
+            </a>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
@@ -649,6 +712,28 @@
         <span class="closing-word-red reveal-slide-right">STARTS HERE</span>
       </h2>
       <div class="closing-div-rule"></div>
+
+      <!-- WAX SEAL STAMP -->
+      <div class="wax-seal-wrapper" id="waxSeal">
+        <div class="wax-seal">
+          <div class="wax-seal-inner">
+            <div class="wax-seal-monogram">JBC</div>
+            <div class="wax-seal-ring"></div>
+            <div class="wax-seal-text">
+              <svg viewBox="0 0 200 200" class="wax-seal-svg">
+                <defs>
+                  <path id="circle-text" d="M 100,100 m -70,0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0" />
+                </defs>
+                <text class="wax-seal-curved-text">
+                  <textPath href="#circle-text" startOffset="0%">
+                    JAI HIND BUSINESS CONCLAVE &middot; 2026 &middot;
+                  </textPath>
+                </text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="contact-cards">
         <div class="contact-card glass reveal-up-stagger">
