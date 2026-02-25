@@ -898,17 +898,14 @@ button:hover,
   width: auto;
   object-fit: contain;
   opacity: 0.85;
-  filter: grayscale(100%) brightness(80%);
   transition:
     opacity 0.2s,
-    transform 0.2s,
-    filter 0.3s;
+    transform 0.2s;
 }
 
 .logo-item:hover img {
   opacity: 1;
   transform: scale(1.05);
-  filter: grayscale(0%) brightness(100%);
 }
 
 .logo-sep {
@@ -1324,6 +1321,7 @@ button:hover,
     padding: 3px 8px;
   }
 }
+
 /* =========================================
    DARK MODE OVERRIDES & TOGGLE
    ========================================= */
@@ -1412,7 +1410,7 @@ body.dark-mode nav {
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-body.dark-mode nav .logo {
+body.dark-mode .nav-logo {
   color: #ffffff;
 }
 
@@ -1598,14 +1596,6 @@ body.dark-mode .iframe-wrapper:hover {
 body.dark-mode .marquee-wrapper {
   background: rgba(255, 255, 255, 0.03);
   border-color: rgba(255, 255, 255, 0.07);
-}
-
-body.dark-mode .logo-item img {
-  filter: grayscale(100%) brightness(200%) !important;
-}
-
-body.dark-mode .logo-item img:hover {
-  filter: grayscale(0%) brightness(100%) !important;
 }
 
 body.dark-mode .cta-subtext {
